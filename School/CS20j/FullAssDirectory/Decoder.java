@@ -1,0 +1,94 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+/**
+* Jacob Daniel Burgess
+* jburgess
+* jacobdanielburgess@gmail.com
+* Decoder.java
+* Assignment 3(CodeBreaker!) 
+**/
+class Decoder {
+    /**
+     * Description:
+     *
+     *     Finds most common characters and replaces them with (cars) arraylist values
+     *     in order from most common to least Common and from (cars)[0] to (cars)[10] 
+     *
+     * working/tested
+     **/
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+	char[] cars = {'E','T','A','O','I','N','S','H','R','D',};
+        ArrayList<String> input = new ArrayList<>();
+	//until EOF
+        while (sc.hasNextLine())
+	    input.add(sc.nextLine().toLowerCase());
+	//Calles on topten(); who returns top ten most common characters
+        ArrayList<Character> commonChars = topTen(input);
+	//temp vars
+	char c;
+	String str;
+	//replaces most common characters with (cars) arraylist characters in order 
+	for (int j = 0; j < input.size();j++){
+	    str = input.get(j);
+	    for (int i = 0; i < commonChars.size(); i++){
+		c = commonChars.get(i);
+		//the fancy replace function
+		str = str.replace(c, cars[i]);
+	    }
+	    //applying newly modified string back into its spot
+	    input.set(j, str);
+	}
+	//Printing out final result
+	for (int i = 0; i < input.size(); i++)
+	    System.out.println(input.get(i));
+	//closing the Scanner cuz we done
+        sc.close();
+    }
+
+    public static ArrayList<Character> topTen(ArrayList<String> arr) {
+        ArrayList<Character> chars = new ArrayList<>();
+        ArrayList<Integer> count = new ArrayList<>();
+	//the mess below just counts how many times an individual characters appear
+	//iriterates through Lines
+	for (String line : arr) {
+	    //irriterates though Strings in line
+	    for (String str : line.split(" ")){
+		for (char c : str.toCharArray()) {
+		    //if chars already contains Letter
+		    if (c >= 47 && c <= 57 || c >= 64 && c >= 90 || c >= 96 && c <= 122) {
+			if (chars.contains(c)) {
+			    // then Count
+			    count.set(chars.indexOf(c), count.get(chars.indexOf(c)) + 1);
+			} else {//else then add letter and count
+			    chars.add(c);
+			    count.add(1);
+		        }
+		    }
+	        }
+	    }
+        }
+	//this next mess sorts the top ten using the result from above
+	int biggest = 0;
+	int index = 0;
+        //Final List of the up to top ten most common characters
+        ArrayList<Character> cars = new ArrayList<>();
+        // up to 10 characters but only if has aviable characters
+        for (int j = 0; j < 10 && j < count.size(); j++) {
+	    biggest = 0;
+	    index = 0;
+	    // Finds Biggest
+	    for (int i = 0; i < count.size(); i++) {
+		// assigns biggest and indexOf
+		if (count.get(i) > biggest && cars.contains(chars.get(i)) != true) {
+		    biggest = count.get(i);
+		    index = i;
+		}       
+	    }
+	    //uses index of biggest to
+	    cars.add(chars.get(index));
+        }
+        return cars;
+    }
+}

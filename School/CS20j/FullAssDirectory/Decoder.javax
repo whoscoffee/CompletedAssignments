@@ -1,0 +1,45 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Decoder {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<String> arr = new ArrayList<>();
+        while (sc.hasNextLine()) {
+            for (String str : sc.nextLine().split(" "))
+                arr.add(str);
+        }
+        char[] topTens = topTen(arr);
+        for (char c : topTens)
+            System.out.println(c);
+        sc.close();
+    }
+
+    public static char[] topTen(ArrayList<String> arr) {
+        ArrayList<Character> listoChars = new ArrayList<>();
+        ArrayList<Integer> count = new ArrayList<>();
+        int k = 0;
+        for (char c : arr.toString().toCharArray()){
+            if (listoChars.contains(c)) {
+                k = listoChars.indexOf(c);
+                count.set(k, count.get(k) + 1);
+            } else {
+                listoChars.add(c);
+                count.add(1);
+            }
+
+        }
+        ArrayList<Character> cars = new ArrayList<>();
+        // up to 10 characters
+        for (int j = 0; j < 10; j++) {
+            // only if has aviable characters
+            if (j < count.size()) {
+                // comparor
+                int biggest = 0;
+                int index = 0;
+                // Finds Biggest
+                for (int i = 0; i < count.size(); i++) {
+                    // gets count
+                    int l = count.get(i);
+                    // assigns biggest and indexOf
+     

@@ -1,0 +1,69 @@
+Hey, uhm this was the main program i was working on in week 2
+its pretty much a revamped version of what i did in week one
+
+So
+
+	Classes:
+	
+		Designer.java //main class
+		Group0.java  //this class is like xform.java from week 01, but more simple and made by me
+		Rectangle  //im pretty sure this is just javafx.scene.shape.box copied and i was using it so i can understand how it works
+		Textfeild0 // is a Textfield that only accepts numbers
+
+		example   //example is my 2d line\art program i explain somewhere below.
+
+		Maker     //this is a javafx 2d application that randomly generates a grid(further explaination below)
+
+
+
+
+So in all i didnt do that much coding, but i was learning..
+
+that being said, i was getting frustrated, so i moved to 2d
+
+which is easier, so i made some line art with loops 
+
+
+Then i wanted to make an ai like app, so my first attempt at that is maker
+
+and what it does is makes grids 
+
+it makes theses grid using Random,
+
+a random number between 0 and Timz the variable (or in this class Timz = 10, so between 0 and 10)
+
+this number is used to make the rows and colums
+
+So if it randomly picks 5, then there should be 5 rows and 5 columns 
+
+this grid is proportional to height and width variables
+
+so it fills the scene with this grid
+
+
+Theres also a button that goes through the 10 (or Timz) possible outcomes
+
+without outputting the same outcome twice
+
+this button clears the screen then replaces it with the next grid
+
+
+so yea, my goal was to make something  using parameters
+
+so that in turn ill be given optiions to look at.
+
+i would like to explore this more, it seems fun.  
+
+
+
+
+
+Note: ivent been able to get javafx to work on pengo
+
+
+      
+
+From,
+Jake
+
+jacobdanielburgess@gmail.com||CS20j||2019

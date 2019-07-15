@@ -1,0 +1,72 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Decoder {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+	char[] cars = {'E','T','A','O','I','N','S','H','R','D',};
+        ArrayList<String> input = new ArrayList<>();
+	//until EOF
+        while (sc.hasNextLine())
+	    input.add(sc.nextLine().toLowerCase());
+	//calls on topTem, and Returns Top ten most common characters
+        ArrayList<Character> commonChars = topTen(input);
+	char c;
+	String str;
+	for (int j = 0; j < input.size();j++){
+	    str = input.get(j);
+	    for (int i = 0; i < commonChars.size(); i++){
+		c = commonChars.get(i);
+		str = str.replace(c, cars[i]);
+	    }
+	    input.set(j, str);
+	}
+	for (int i = 0; i < input.size(); i++)
+	    System.out.println(input.get(i));
+        sc.close();
+    }
+
+    public static ArrayList<Character> topTen(ArrayList<String> arr) {
+        ArrayList<Character> chars = new ArrayList<>();
+        ArrayList<Integer> count = new ArrayList<>();
+	//iriterates through Lines
+	for (String line : arr) {
+	    //irriterates though Strings in line
+	    for (String str : line.split(" ")){
+		for (char c : str.toCharArray()) {
+		    //if chars already contains Letter
+		    if (c >= 47 && c <= 57 || c >= 64 && c >= 90 || c >= 96 && c <= 122) {
+			if (chars.contains(c)) {
+			    // then Count
+			    count.set(chars.indexOf(c), count.get(chars.indexOf(c)) + 1);
+			} else {//else then add letter and count
+			    chars.add(c);
+			    count.add(1);
+		        }
+		    }
+	        }
+	    }
+        }
+	int biggest = 0;
+	int index = 0;
+        //Final List of the up to top ten most common characters
+        ArrayList<Character> cars = new ArrayList<>();
+        // up to 10 characters but only if has aviable characters
+        for (int j = 0; j < 10 && j < count.size(); j++) {
+	    // comparor and temporary variable
+	    int biggest = 0;
+	    i
+	    // Finds Biggest
+	    for (int i = 0; i < count.size(); i++) {
+		// assigns biggest and indexOf
+		if (count.get(i) > biggest && cars.contains(chars.get(i)) != true) {
+		    biggest = count.get(i);
+		    index = i;
+		}       
+	    }
+	    cars.add(chars.get(index));
+        }
+        return cars;
+    }
+}

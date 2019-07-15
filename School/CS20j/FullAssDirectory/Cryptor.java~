@@ -1,0 +1,11 @@
+class Cryptor {
+    
+    //needs 2d array
+    
+    encrypt(int page, String msg){
+
+    }
+    decrypt(String msg){
+    
+    }
+} 
